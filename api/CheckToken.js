@@ -13,18 +13,18 @@ router.get('/', (req, res) => {
      */
     const token = req.headers.authorization?.split(' ')[1];
     if (!token) {
-        return res.send.json({ isLoggedIn : false });
+        return res.json({ isLoggedIn : false });
     }
-    
+        
     try {
         /**
          * jwt.verify 함수는 성공적으로 검증하면 토큰의 Payload 객체를 반환
-         */
-        const userId = jwt.verify(token, process.env.JWT_ACCESS_SECRET);
-        if (userId)
-            return res.send.json({ isLoggedIn : true });
+        */
+        const user = jwt.verify(token, process.env.JWT_ACCESS_SECRET);
+        if (user)
+            return res.json({ isLoggedIn : true });
         else
-            return res.send.json({ isLoggedIn : false });
+            return res.json({ isLoggedIn : false });
     } catch (err) {
         console.error(err);
     }
