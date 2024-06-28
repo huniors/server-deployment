@@ -8,11 +8,11 @@ app.use(cors({
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']
 }));
 app.options('*', cors());
-app.listen(3000, () => {
-    console.log(`Server running on port 3000`);
+app.listen(process.env.PORT, () => {
+    console.log(`Server running on port ${process.env.PORT}`);
 });
 
-mongoose.connect("mongodb+srv://hmusk7:tJiuD3c7s4oeLeC6@developmentcluster.uhickvy.mongodb.net/?retryWrites=true&w=majority&appName=DevelopmentCluster/MyLittlePelican")
+mongoose.connect(process.env.DBURI)
     .then(() => console.log('MongoDB connected'))
     .catch(err => console.log(err));
 
