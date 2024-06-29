@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
         /**
          * jwt.verify 함수는 성공적으로 검증하면 토큰의 Payload 객체를 반환
         */
-        const user = jwt.verify(token, process.env.JWT_ACCESS_SECRET);
+        const user = jwt.verify(token, process.env.JWT_SECRET);
         if (user) {
             console.log("token 인증 완료");
             return res.json({ isLoggedIn : true });
