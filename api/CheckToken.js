@@ -13,6 +13,7 @@ router.get('/', (req, res) => {
      */
     const token = req.headers.authorization?.split(' ')[1];
     if (!token) {
+        console.log("token 존재하지 않음");
         return res.json({ isLoggedIn : false });
     }
         
@@ -21,10 +22,13 @@ router.get('/', (req, res) => {
          * jwt.verify 함수는 성공적으로 검증하면 토큰의 Payload 객체를 반환
         */
         const user = jwt.verify(token, process.env.JWT_ACCESS_SECRET);
-        if (user)
+        if (user) {
+            console.log("token 인증 완료");
             return res.json({ isLoggedIn : true });
-        else
+        } else {
+            console.log("token 인증 실패");
             return res.json({ isLoggedIn : false });
+        }
     } catch (err) {
         console.error(err);
     }
