@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
+router.post('/', (req, res) => {
     /**
      * authorization 은 요청 헤더에서 Authorization 값을 가져온다.
      * ? 연산자는 Optional Chaining 으로, authorization 헤더가 존재하지 않을 경우 에러를 발생시키지 않고 undefined 반환
