@@ -14,7 +14,7 @@ router.post('/', async (req, res) => {
         const pwMatch = await bcrypt.compare(password, user.password);
 
         if (!user || !pwMatch)
-            return res.sendStatus(401);
+            return res.status(401).send("X");
         
         /**
          * 새로운 토큰을 생성하는 함수
@@ -40,10 +40,10 @@ router.post('/', async (req, res) => {
             sameSite: 'strict'
         });
 
-        return res.sendStatus(200)
+        return res.status(200).send("OK");
         } catch (err) {
         console.error(err);
-        return res.sendStatus(500);
+        return res.status(500).send("X");
     }
 });
     
