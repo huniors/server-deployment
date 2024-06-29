@@ -27,7 +27,7 @@ const userSchema = new Schema({
         default: () => Date.now(),
         immutable: true,
     },
-});
+}, { collection: 'User' });
 
 const User = model('User', userSchema);
 
