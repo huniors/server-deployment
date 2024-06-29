@@ -23,7 +23,7 @@ router.post('/', async (req, res) => {
          * @param {*} { expiresIn: '15m' } 토큰의 유효 기간
          * @returns {*} accessToken 비밀키에 의해 서명된 토큰
          */
-        const token = jwt.sign(user, process.env.JWT_SECRET, { expiresIn: '1h' });
+        const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
         /**
          * 클라이언트에 토큰을 넘겨주는 방식은 다양하며, 쿠키를 통해 토큰을 넘겨주기 위해 쿠키를 설정한다.
